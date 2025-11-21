@@ -1,0 +1,19 @@
+name: Publish to Open VSX Registry
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  publish-openvsx:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Build Extension
+        uses: ./.github/actions/build
+
+      - name: Publish to Open VSX Registry
+        run: ovsx publish -p ${{ secrets.OVSX_PAT }}
+        continue-on-error: true

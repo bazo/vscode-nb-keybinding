@@ -1,0 +1,27 @@
+name: Publish to VS Code Marketplace
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Build Extension
+        uses: ./.github/actions/build
+
+      - name: Publish to VS Code Marketplace
+        run: vsce publish -p ${{ secrets.VSCE_PAT }}
+        continue-on-error: true
+
+      - name: Upload Release Asset
+        uses: softprops/action-gh-release@v2
+        if: success()
+        with:
+          files: "*.vsix"
