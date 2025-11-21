@@ -1,9 +1,9 @@
 {
-	"name": "netbeans-keybindings",
-	"displayName": "Netbeans Keymaps",
+	"name": "@brainz-digital/netbeans-keybindings",
+	"displayName": "Netbeans Keymapping",
 	"description": "Bring Netbeans default keymap to VS Code, Cursor, and Antigravity.",
-	"version": "0.1.1",
-	"publisher": "bazo",
+	"version": "0.1.2",
+	"publisher": "brainz-digital-com",
 	"engines": {
 		"vscode": "^1.9.0"
 	},
